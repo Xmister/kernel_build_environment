@@ -1,13 +1,13 @@
 #!/bin/bash
 KBE_PATH=/home/xmister/htc/
 KERNEL_DIR=kernel
-KERNEL_PATH=$KBE_PATH/$KERNEL_DIR
+KERNEL_PATH=${KBE_PATH}/${KERNEL_DIR}
 TOOLCHAIN=arm-linux-gnueabi-
 BUILD_DIR=build
-BUILD_LOG=../build.log
+BUILD_LOG="../build.log"
 cd $KBE_PATH
-rm $BUILD_LOG
 cd $KERNEL_PATH
+rm $BUILD_LOG
 #Sense
 make clean 2>&1
 make ARCH=arm CROSS_COMPILE=$TOOLCHAIN clean >> $BUILD_LOG 2>&1
