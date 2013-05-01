@@ -5,6 +5,7 @@ KERNEL_PATH=${KBE_PATH}/${KERNEL_DIR}
 TOOLCHAIN=arm-linux-gnueabi-
 BUILD_DIR=build
 BUILD_LOG="../build.log"
+NUM_THREADS=6
 cd $KBE_PATH
 cd $KERNEL_PATH
 rm $BUILD_LOG
@@ -14,10 +15,10 @@ make clean >> $BUILD_LOG 2>&1
 make ARCH=arm CROSS_COMPILE=$TOOLCHAIN clean >> $BUILD_LOG 2>&1
 cat arch/arm/configs/ap33_android_defconfig arch/arm/configs/ap33_android_sense > .config
 echo "Building kernel..."
-make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -j6 >> $BUILD_LOG 2>&1
+make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -j$NUM_THREADS >> $BUILD_LOG 2>&1
 echo "Building wireless module..."
 make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -C drivers/net/wireless/compat-wireless_R5.SP2.03 KLIB=`pwd` KLIB_BUILD=`pwd` clean >> $BUILD_LOG 2>&1
-make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -C drivers/net/wireless/compat-wireless_R5.SP2.03 KLIB=`pwd` KLIB_BUILD=`pwd` -j2 >> $BUILD_LOG 2>&1
+make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -C drivers/net/wireless/compat-wireless_R5.SP2.03 KLIB=`pwd` KLIB_BUILD=`pwd` -j$NUM_THREADS >> $BUILD_LOG 2>&1
 echo "Saving binaries..."
 cd ..
 rm -rf build/*
@@ -43,10 +44,10 @@ make clean >> $BUILD_LOG 2>&1
 make ARCH=arm CROSS_COMPILE=$TOOLCHAIN clean >> $BUILD_LOG 2>&1
 make ARCH=arm CROSS_COMPILE=$TOOLCHAIN ap33_android_defconfig >> $BUILD_LOG 2>&1
 echo "Building kernel..."
-make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -j6 >> $BUILD_LOG 2>&1
+make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -j$NUM_THREADS >> $BUILD_LOG 2>&1
 echo "Building wireless module..."
 make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -C drivers/net/wireless/compat-wireless_R5.SP2.03 KLIB=`pwd` KLIB_BUILD=`pwd` clean >> $BUILD_LOG 2>&1
-make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -C drivers/net/wireless/compat-wireless_R5.SP2.03 KLIB=`pwd` KLIB_BUILD=`pwd` -j2 >> $BUILD_LOG 2>&1
+make ARCH=arm CROSS_COMPILE=$TOOLCHAIN -C drivers/net/wireless/compat-wireless_R5.SP2.03 KLIB=`pwd` KLIB_BUILD=`pwd` -j$NUM_THREADS >> $BUILD_LOG 2>&1
 echo "Saving binaries..."
 cd ..
 cp $KERNEL_DIR/arch/arm/boot/zImage $BUILD_DIR/zImage_aosp
