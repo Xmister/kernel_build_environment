@@ -2,13 +2,13 @@
 KBE_PATH=/home/xmister/htc/
 KERNEL_DIR=kernel
 KERNEL_PATH=${KBE_PATH}/${KERNEL_DIR}
-TOOLCHAIN=arm-linux-gnueabi-
+TOOLCHAIN=/usr/bin/arm-linux-gnueabihf-
 BUILD_DIR=build
 BUILD_LOG="../build.log"
 NUM_THREADS=6
 cd $KBE_PATH
 cd $KERNEL_PATH
-rm $BUILD_LOG
+mv $BUILD_LOG ${BUILD_LOG}.old
 #Sense
 echo "Initializing Sense build..."
 make clean >> $BUILD_LOG 2>&1

@@ -24,3 +24,5 @@ cp -R /home/xmister/htc/build/aosp/system/lib /home/xmister/htc/release/system/l
 cd /home/xmister/htc/release/
 zip -r xm_kernel_$(echo $now)_aosp.zip *
 mv *.zip /home/xmister/htc/update/
+#Publish files
+u1-publish-folder /home/xmister/htc/update One/Worldwide
