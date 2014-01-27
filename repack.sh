@@ -4,6 +4,16 @@ now=$(cat /home/xmister/htc/kernel/.version)
 cd /home/xmister/htc/build
 cp -f zImage* ../packing
 cd ../packing
+rm sense.cpio.gz
+rm aosp.cpio.gz
+cd sense
+ls | cpio -ov > ../sense.cpio
+cd ..
+gzip sense.cpio
+cd aosp
+ls | cpio -ov > ../aosp.cpio
+cd ..
+gzip aosp.cpio
 rm sense_boot.img
 rm aosp_boot.img
 mkbootimg --kernel zImage_sense --ramdisk sense.cpio.gz -o sense_boot.img

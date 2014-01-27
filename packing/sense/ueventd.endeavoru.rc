@@ -1,3 +1,4 @@
+# Edited for Android Revolution HD
 /dev/tegra-throughput       0666   system     system
 /dev/knvmap                 0660   system     system
 /dev/nvmap                  0666   system     system
@@ -63,5 +64,5 @@
 # HtcCarGPS
 /dev/ttyHSUSB1              0600   system     system
 
-# Autobot
+# autobot
 /dev/ttyHSUSB3              0660   autobot_access  autobot_access
