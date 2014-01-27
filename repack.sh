@@ -7,11 +7,11 @@ cd ../packing
 rm sense.cpio.gz
 rm aosp.cpio.gz
 cd sense
-ls | cpio -ov > ../sense.cpio
+ls | cpio -o > ../sense.cpio
 cd ..
 gzip sense.cpio
 cd aosp
-ls | cpio -ov > ../aosp.cpio
+ls | cpio -o > ../aosp.cpio
 cd ..
 gzip aosp.cpio
 rm sense_boot.img
