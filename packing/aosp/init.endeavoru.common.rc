@@ -419,6 +419,12 @@ service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
     disabled
     oneshot
 
+# HTC PnPMgr daemon
+service pnpmgr /system/bin/pnpmgr
+    class core
+    user root
+    group root
+    disabled
 
 on property:init.svc.bootanim=stopped
 start adaptive
